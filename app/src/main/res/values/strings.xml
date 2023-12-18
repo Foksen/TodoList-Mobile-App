@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Список дел</string>
+    <string name="app_name">TodoList</string>
+
+    <string name="main_title">Список дел</string>
 
     <string name="creation_toolbar">Добавить</string>
     <string name="creation_toolbar_add">Добавить</string>
