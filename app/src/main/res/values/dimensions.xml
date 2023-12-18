@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="general_horizontal">16dp</dimen>
+
+    <dimen name="fab_margin">24dp</dimen>
+
+    <dimen name="main_title_font_size">48sp</dimen>
+    <dimen name="main_title_margin_top">20dp</dimen>
+    <dimen name="main_recycler_margin_top">24dp</dimen>
+
+    <dimen name="creation_toolbar_padding_end">8dp</dimen>
+    <dimen name="creation_title_margin_top">20dp</dimen>
+    <dimen name="creation_desc_margin_top">20dp</dimen>
+</resources>
