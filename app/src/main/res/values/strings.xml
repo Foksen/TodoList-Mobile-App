@@ -3,6 +3,9 @@
 
     <string name="creation_toolbar">Добавить</string>
     <string name="creation_toolbar_add">Добавить</string>
-    <string name="creation_title_hint">Название дела</string>
+    <string name="creation_title_hint">Название</string>
     <string name="creation_desc_hint">Описание</string>
+
+    <string name="entity_title">Заголовок</string>
+    <string name="entity_desc">Описание</string>
 </resources>

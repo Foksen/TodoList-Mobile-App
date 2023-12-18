@@ -5,10 +5,16 @@
     <dimen name="fab_margin">24dp</dimen>
 
     <dimen name="main_title_font_size">48sp</dimen>
-    <dimen name="main_title_margin_top">20dp</dimen>
-    <dimen name="main_recycler_margin_top">24dp</dimen>
+    <dimen name="main_title_margin_top">30dp</dimen>
+    <dimen name="main_recycler_margin_top">14dp</dimen>
+    <dimen name="main_recycler_padding_bottom">20dp</dimen>
 
     <dimen name="creation_toolbar_padding_end">8dp</dimen>
     <dimen name="creation_title_margin_top">20dp</dimen>
     <dimen name="creation_desc_margin_top">20dp</dimen>
+
+    <dimen name="entity_title_font_size">28sp</dimen>
+    <dimen name="entity_title_margin_bottom">8dp</dimen>
+    <dimen name="entity_desc_font_size">18sp</dimen>
+    <dimen name="entity_margin_bottom">18dp</dimen>
 </resources>
