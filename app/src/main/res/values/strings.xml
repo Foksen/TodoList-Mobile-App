@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Список дел</string>
 
-    <string name="creation_toolbar">Добавить дело</string>
+    <string name="creation_toolbar">Добавить</string>
     <string name="creation_toolbar_add">Добавить</string>
     <string name="creation_title_hint">Название дела</string>
     <string name="creation_desc_hint">Описание</string>
