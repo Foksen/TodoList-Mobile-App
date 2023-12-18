@@ -1,6 +1,13 @@
 package com.example.todolist;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -8,6 +15,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todolist.databinding.ActivityCreationBinding;
+
+import java.util.Objects;
 
 public class CreationActivity extends AppCompatActivity {
     ActivityCreationBinding binding;
@@ -33,8 +42,50 @@ public class CreationActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_add_task) {
-            Toast.makeText(this, "Add task", Toast.LENGTH_SHORT).show();
+            if (binding.editTitle.getText().toString().isEmpty()) {
+                binding.editTitle.setError("Обязательное поле");
+            }
+            else {
+                new InsertTaskTask().execute();
+                finish();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // Класс-обёртка для асинхронного обновления базы данных
+    private class InsertTaskTask extends AsyncTask<Void, Void, Boolean> {
+        private ContentValues taskValues;
+
+        @Override
+        protected void onPreExecute() {
+            taskValues = new ContentValues();
+            taskValues.put("TITLE", binding.editTitle.getText().toString());
+            taskValues.put("DESCRIPTION", binding.editDesc.getText().toString());
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            SQLiteOpenHelper todolistDatabaseHelper = new TodolistDatabaseHelper(CreationActivity.this);       // Объект класса-обёртки для работы с БД
+            try {
+                SQLiteDatabase db = todolistDatabaseHelper.getReadableDatabase();                    // Объект базы данных
+                db.insert("TASKS", null, taskValues);
+                db.close();
+                return true;
+            } catch (SQLiteException e) {   // Обработка исключений
+                Log.e("TODOLIST", Objects.requireNonNull(e.getMessage()));
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean success) {
+            if (success) {
+                Toast.makeText(CreationActivity.this, "Задача добавлена", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(CreationActivity.this, "Ошибка при добавлении!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
