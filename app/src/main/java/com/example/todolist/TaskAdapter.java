@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         TaskEntity item = data.get(position);
         holder.title.setText(item.getTitle());
         holder.desc.setText(item.getDesc());
+        if (item.getDesc().isEmpty()) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,0,0,0);
+            holder.title.setLayoutParams(params);
+            holder.desc.setVisibility(View.GONE);
+        }
     }
 
     // Получить количество записей
